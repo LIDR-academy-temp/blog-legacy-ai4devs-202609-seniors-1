@@ -58,6 +58,6 @@ Cómo está ordenada la tabla:
 
 ## Parte B
 
-1. El agente devolvió 41 hallazgos y yo comprobé <N> abriendo el archivo.
-2. No supe decidir la prioridad de <H0X>: <qué dos cosas se contradecían>.
-3. El agente afirmó <qué> y no pude verificarlo: <por qué>.
+1. El agente devolvió **41** hallazgos y se comprobaron **11** abriendo el archivo o consultando la API en marcha (H01, H02, H03, H06, H07, H08, H09, H10, H13, H17 y H22); todos después del `FIN` (a los 21,2 min) y con apoyo de una sesión de Claude que abrió el código: dentro del reloj no hay comprobación registrada.
+2. **H15** (para borrar o editar basta el correo de quien comentó; daño 4, radio 3) no queda bien ordenado: la tabla lo deja en el nivel 4, detrás de H05 (dos peticiones idénticas; daño 1, radio 3), que va en el nivel 1 solo porque abarata H24 y H11. Se contradicen la precedencia (lo que abarata a otros va primero) y el daño, y no he decidido si H15 debe partirse en contención y arreglo como H01/H16.
+3. **H08**: el agente afirma que «si no hay un proceso fuera del repo, ningún comentario nuevo llega a `aprobado`». En el repo solo hay un `update` sobre `comentarios` (`routes.ts:388`, el cuerpo) y ninguno que cambie `estado`, pero si existe un proceso externo (otra herramienta, acceso directo a la base) no se ve desde aquí: queda sin verificar ni a favor ni en contra. Tampoco se probó la carrera de H09 (dos envíos simultáneos): solo se leyó el código.
