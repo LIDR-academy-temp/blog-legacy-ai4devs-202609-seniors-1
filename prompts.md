@@ -22,14 +22,39 @@ Borra el ejemplo de abajo cuando escribas el primero.
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
+**Modelo:** Sonnet 5.5
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+fíjate en el archivo `prompts.md`. Quiero que guardes ahí cada prompt que te vaya pidiendo en esta sesión. También quiero que escribas el resultado de la petición que te haga cada vez. Incluye este prompt también. Tienes las instrucciones y un ejemplo de cómo hacer las anotaciones
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** Borré el ejemplo de `prompts.md` y anoté este prompt tal cual; a partir de ahora anoto cada prompt nuevo con su resultado.
+
+---
+
+## Prompt 2
+
+**Modelo:** Sonnet 5.5
+**Herramienta:** Claude Code
+
+```
+produce la auditoría priorizada de la feature de comentarios y déjala escrita en docs/auditoria/comentarios.md, no en el chat.
+
+Una feature es una funcionalidad del blog de punta a punta: sus rutas en la API, su tabla en la base de datos y lo que la web enseña de ella. Este blog tiene cinco (posts, comentarios, autores, categorías y etiquetas), y la tuya es comentarios. Sólo esa y no el sistema entero. 
+
+El criterio ha de ser el siguiente:
+1. precedencia (lo que abarata o desbloquea a otro hallazgo va antes)
+2. dentro de cada nivel el daño dividido por el radio. Si un hallazgo tiene el daño más alto y la precedencia más baja a la vez, se parte en dos filas, una contención que corta el daño hoy y el arreglo de fondo que espera su turno
+3. Las propuestas que nadie ha metido todavía van fuera de la tabla, con lo que habría que medir, al lado de cada entrada. 
+
+El formato no es negociable: una fila por hallazgo, con estas seis casillas:
+1. Qué es. Una frase. Si necesitas tres, es que hay dos hallazgos.
+2. Dónde está, con la línea que lo demuestra. Sin esta casilla, la fila no se escribe.
+3. Qué se rompe, y quién lo nota. El efecto concreto y a quién le llega. "Nadie todavía" es una respuesta válida y buena.
+4. Cuántos sitios hay que tocar. Contados, no estimados.
+5. ¿Se deshace con un revert? Sí o no, y si es que no, por qué no.
+6. ¿Bloquea o desbloquea a otro hallazgo? Nombrando al otro. "A ninguno" es la respuesta más frecuente.
+```
+
+**Qué salió:** `docs/auditoria/comentarios.md` con 22 hallazgos en cinco niveles (6 casillas cada uno, con la línea), la autoría por correo partida en contención (#3) y fondo (#13), 5 propuestas fuera de la tabla con qué medir, y la Parte B del README. Contrasté 3 con la API en marcha (solo GET); POST/DELETE/PATCH están leídos, no ejecutados. La casilla «comprobadas por ti» de la Parte B queda en blanco para que la rellenes.
